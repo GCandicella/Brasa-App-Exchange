@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export default class App extends React.Component {
+    state = {
+        loading: true,
+        currencies: null
+    };
 
-export default App;
+    async componentDidMount() {
+        const response = await fetch("https://api.exchangeratesapi.io/latestt");
+        const data = await response.json();
+        this.setState({
+            loading: false,
+            currencies: data.hasOwnProperty('rates') ? data : null
+        });
+    }
+
+    render() {
+        if (this.state.loading) {
+            return <div className='error'><p>Loading...</p></div>
+        }
+        if (this.state.currencies === null) {
+            return <div className='error'><p>API is out of service.</p></div>
+        }
+        return (
+            <div className='vh-100'>
+
+            </div>
+        )
+    }
+
+}
