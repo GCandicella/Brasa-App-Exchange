@@ -21,7 +21,7 @@ export default class App extends React.Component {
             return <div className='error'><p>Loading...</p></div>
         }
         if (this.state.currencies === null) {
-            return <div className='error'><p>API is out of service.</p></div>
+            return <div className='error'><p>Sorry, our source is out of service.</p></div>
         }
         return (
             <div className='vh-100'>
