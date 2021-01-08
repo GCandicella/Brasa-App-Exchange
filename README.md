@@ -38,7 +38,7 @@ $ git clone https://github.com/GCandicella/Brasa-App-Exchange
 A seguir, entramos na pasta e instalamos as dependências necessárias:
 
 ```console
-$ Brasa-App-Exchange/
+$ cd Brasa-App-Exchange/
 $ npm install
 ```
 Para iniciar o projeto no navegador, execute:
