@@ -16,11 +16,18 @@ function Calculator({currencies}) {
     }
 
     function includeEUR(rates) {
-        let obj = new Object(rates);
-        if (!obj.hasOwnProperty(ref)) {
-            obj[ref] = 1.0
+        let objaux = {}
+        Object.assign(objaux, rates);
+        if (!objaux.hasOwnProperty(ref)) {
+            objaux[ref] = 1.0
         }
-        return obj;
+        return Object.keys(objaux).sort().reduce(
+            (obj, key) => {
+                obj[key] = objaux[key];
+                return obj;
+            },
+            {}
+        );
     }
 
     const [fromCurrency, setFrom] = useState(ref);
@@ -28,19 +35,27 @@ function Calculator({currencies}) {
     const [qtd, setQtd] = useState(1000);
     const [total, setTotal] = useState(rates.BRL);
 
-    function updateFrom(value){
+    function updateFrom(value) {
         setFrom(value);
     }
-    function updateTo(value){
+
+    function updateTo(value) {
         setTo(value);
     }
-    function updateQtd(value){
+
+    function updateQtd(value) {
         setQtd(value);
     }
 
     useEffect(() => {
-        setTotal(Math.floor(rates[toCurrency]/rates[fromCurrency]*qtd*10000)/10000);
-    });
+        setTotal(Math.floor(rates[toCurrency] / rates[fromCurrency] * qtd * 10000) / 10000);
+    }, [rates, toCurrency, fromCurrency, qtd]);
+
+    function invertPostions(){
+        let aux = fromCurrency;
+        setFrom(toCurrency);
+        setTo(aux)
+    }
 
     return (
         <div>
@@ -55,7 +70,7 @@ function Calculator({currencies}) {
                     </select>
                     <input type='number' value={qtd} onChange={e => updateQtd(e.target.value)}/>
                 </div>
-                <i className='fas fa-times'></i>
+                <i onClick={invertPostions} className='change-icon fas fa-sync-alt'></i>
                 <div className='group-form'>
                     <select value={toCurrency} onChange={e => updateTo(e.target.value)}>
                         {Object.keys(rates).map((option, index) =>

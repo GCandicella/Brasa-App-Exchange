@@ -1,7 +1,8 @@
-.calculator-form i {
+.calculator-form i.change-icon  {
     margin: 20px;
-    font-size: 1em;
-    color: #999999;
+    font-size: 1.2em;
+    cursor: pointer;
+    color: #333333;
 }
 
 .calculator-form select, .calculator-form input[type="number"] {
@@ -43,4 +44,44 @@ hr {
 
 .updated-time{
     font-weight: lighter;
+}
+
+@media (max-width: 991px) {
+    .calculator-form select {
+        width: 30%;
+    }
+
+    .calculator-form input[type="number"] {
+        width: 70%;
+    }
+}
+
+@media (max-width: 478px) {
+    .calculator-form select {
+        width: 35%;
+    }
+    .calculator-form input[type="number"] {
+        width: 65%;
+    }
+}
+
+@media (max-width: 420px) {
+    .calculator-form select, .calculator-form input[type="number"] {
+        padding: 10px;
+    }
+    .calculator-form select {
+        width: 40%;
+    }
+    .calculator-form input[type="number"] {
+        width: 60%;
+    }
+}
+
+@media (max-width: 338px) {
+    .calculator-form select {
+        width: 50%;
+    }
+    .calculator-form input[type="number"] {
+        width: 50%;
+    }
 }
