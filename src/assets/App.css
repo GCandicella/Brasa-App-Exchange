@@ -11,6 +11,25 @@
     font-weight: 600;
 }
 
+.hide{
+    display: none !important;
+}
+
+.flex{
+    display: flex !important;
+}
+
+.goArrow, .backArrow{
+    cursor: pointer;
+    font-size: 5em;
+    color: white;
+}
+
+.backArrow{
+    float: left;
+    margin-bottom: 50px;
+}
+
 .middle {
     height: 100vh;
     display: flex;
@@ -30,6 +49,16 @@
 
 .card-right {
     background-color: #ddd;
+}
+
+.tilt-obj{
+    clear: both;
+}
+
+.Typewriter{
+    font-size: 5em;
+    color: white;
+    font-weight: 700;
 }
 
 @media (max-width: 767px) {

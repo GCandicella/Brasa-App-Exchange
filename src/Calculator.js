@@ -33,11 +33,11 @@ function Calculator({currencies}) {
     const [fromCurrency, setFrom] = useState(ref);
     const [toCurrency, setTo] = useState('BRL');
     const [qtd, setQtd] = useState(1000);
-    const [total, setTotal] = useState(rates.BRL);
+    const [coef, setCoef] = useState(rates.BRL);
 
     useEffect(() => {
-        setTotal(Math.floor(rates[toCurrency] / rates[fromCurrency] * qtd * 10000) / 10000);
-    }, [rates, toCurrency, fromCurrency, qtd]);
+        setCoef(rates[toCurrency] / rates[fromCurrency]);
+    }, [rates, toCurrency, fromCurrency]);
 
     function invertPostions(){
         let aux = fromCurrency;
@@ -67,10 +67,10 @@ function Calculator({currencies}) {
                             </option>
                         )}
                     </select>
-                    <input disabled type='number' placeholder='0' value={total}/>
+                    <input disabled type='number' placeholder='0' value={Math.floor(coef*qtd*10000)/10000}/>
                 </div>
             </form>
-            <p className='unity-convertion'>1 {fromCurrency} = {Math.round(rates[toCurrency]/rates[fromCurrency]*10000)/10000} {toCurrency}</p>
+            <p className='unity-convertion'>1 {fromCurrency} = {Math.floor(coef*10000)/10000} {toCurrency}</p>
             <hr/>
             <p className='updated-time'>Última atualização em {date}</p>
         </div>
