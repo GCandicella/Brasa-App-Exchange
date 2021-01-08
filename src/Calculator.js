@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import './Calculator.css';
+import './assets/Calculator.css';
 
 
 function Calculator({currencies}) {

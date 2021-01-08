@@ -1,7 +1,7 @@
 import React from "react";
 import world from "./localizacao.png";
 import Calculator from "./Calculator";
-import './App.css';
+import './assets/App.css';
 
 export default class App extends React.Component {
     state = {
