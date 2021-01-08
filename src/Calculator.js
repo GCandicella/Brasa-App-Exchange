@@ -35,18 +35,6 @@ function Calculator({currencies}) {
     const [qtd, setQtd] = useState(1000);
     const [total, setTotal] = useState(rates.BRL);
 
-    function updateFrom(value) {
-        setFrom(value);
-    }
-
-    function updateTo(value) {
-        setTo(value);
-    }
-
-    function updateQtd(value) {
-        setQtd(value);
-    }
-
     useEffect(() => {
         setTotal(Math.floor(rates[toCurrency] / rates[fromCurrency] * qtd * 10000) / 10000);
     }, [rates, toCurrency, fromCurrency, qtd]);
@@ -61,18 +49,18 @@ function Calculator({currencies}) {
         <div>
             <form className='calculator-form'>
                 <div className='group-form'>
-                    <select value={fromCurrency} onChange={e => updateFrom(e.target.value)}>
+                    <select value={fromCurrency} onChange={e => setFrom(e.target.value)}>
                         {Object.keys(rates).map((option, index) =>
                             <option key={index} value={option}>
                                 {option}
                             </option>
                         )}
                     </select>
-                    <input type='number' value={qtd} onChange={e => updateQtd(e.target.value)}/>
+                    <input type='number' value={qtd} onChange={e => setQtd(e.target.value)}/>
                 </div>
                 <i onClick={invertPostions} className='change-icon fas fa-sync-alt'></i>
                 <div className='group-form'>
-                    <select value={toCurrency} onChange={e => updateTo(e.target.value)}>
+                    <select value={toCurrency} onChange={e => setTo(e.target.value)}>
                         {Object.keys(rates).map((option, index) =>
                             <option key={index} value={option}>
                                 {option}
@@ -82,6 +70,7 @@ function Calculator({currencies}) {
                     <input disabled type='number' placeholder='0' value={total}/>
                 </div>
             </form>
+            <p className='unity-convertion'>1 {fromCurrency} = {Math.round(rates[toCurrency]/rates[fromCurrency]*10000)/10000} {toCurrency}</p>
             <hr/>
             <p className='updated-time'>Última atualização em {date}</p>
         </div>

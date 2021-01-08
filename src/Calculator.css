@@ -3,6 +3,11 @@
     font-size: 1.2em;
     cursor: pointer;
     color: #333333;
+    transition: 1s;
+}
+
+.calculator-form i.change-icon:hover  {
+    transform: rotate(360deg);
 }
 
 .calculator-form select, .calculator-form input[type="number"] {
@@ -35,8 +40,12 @@
     border-top-right-radius: 10px;
 }
 
+.unity-convertion{
+    text-align: right;
+    font-weight: normal;
+}
+
 hr {
-    margin-top: 7em;
     height: 4px;
     border-radius: 80px;
     background: #999;
@@ -45,6 +54,7 @@ hr {
 .updated-time{
     font-weight: lighter;
 }
+
 
 @media (max-width: 991px) {
     .calculator-form select {
