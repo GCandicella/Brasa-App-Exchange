@@ -1,0 +1,46 @@
+.calculator-form i {
+    margin: 20px;
+    font-size: 1em;
+    color: #999999;
+}
+
+.calculator-form select, .calculator-form input[type="number"] {
+    height: 80px;
+    border: none;
+    padding: 20px;
+}
+
+.calculator-form select:focus, .calculator-form input[type="number"]:focus {
+    outline: none;
+}
+
+.calculator-form select {
+    float: left;
+    width: 20%;
+    border-left: #999 5px solid;
+    border-top: #999 5px solid;
+    border-bottom: #999 5px solid;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.calculator-form input[type="number"] {
+    float: right;
+    width: 80%;
+    border-right: #999 5px solid;
+    border-top: #999 5px solid;
+    border-bottom: #999 5px solid;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+hr {
+    margin-top: 7em;
+    height: 4px;
+    border-radius: 80px;
+    background: #999;
+}
+
+.updated-time{
+    font-weight: lighter;
+}

@@ -1,4 +1,6 @@
 import React from "react";
+import world from "./localizacao.png";
+import Calculator from "./Calculator";
 import './App.css';
 
 export default class App extends React.Component {
@@ -8,7 +10,7 @@ export default class App extends React.Component {
     };
 
     async componentDidMount() {
-        const response = await fetch("https://api.exchangeratesapi.io/latestt");
+        const response = await fetch("https://api.exchangeratesapi.io/latest");
         const data = await response.json();
         this.setState({
             loading: false,
@@ -24,8 +26,20 @@ export default class App extends React.Component {
             return <div className='error'><p>Sorry, our source is out of service.</p></div>
         }
         return (
-            <div className='vh-100'>
 
+            <div className='container vh-100'>
+                <div className='row text-center'>
+                    <div className='middle col-md-4 d-mobile-none'>
+                        <div className='card-left'>
+                            <img width='100%' src={world} alt='Exchange Money'/>
+                        </div>
+                    </div>
+                    <div className='middle col-md-8 col-12'>
+                        <div className='card-right'>
+                            <Calculator currencies={this.state.currencies}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

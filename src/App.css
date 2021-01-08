@@ -1,12 +1,39 @@
-.error{
+.error {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.error p{
+.error p {
     color: aquamarine;
     font-size: 5em;
     font-weight: 600;
+}
+
+.middle {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-left {
+    width: 100%;
+    padding: 2em;
+}
+
+.card-right {
+    width: 100%;
+    padding: 3em;
+}
+
+.card-right {
+    background-color: #ddd;
+}
+
+@media (max-width: 767px) {
+    .d-mobile-none {
+        display: none;
+    }
 }
